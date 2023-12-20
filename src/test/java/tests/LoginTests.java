@@ -34,5 +34,25 @@ public void loginSuccessModel(){
 
     Assert.assertTrue(app.getHelperUser().isLogged());
 }
-
+    @Test
+    public void loginWrongEmail(){
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm("test111gmail.com", "Aa12345$");
+        app.getHelperUser().submitLogin();
+        Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
+    }
+    @Test
+    public void loginWrongPassword(){
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm("test111@gmail.com", "Aa123");
+        app.getHelperUser().submitLogin();
+        Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
+    }
+    @Test
+    public void loginUnregisteredUser(){
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm("luck111@gmail.com", "Aa12345$");
+        app.getHelperUser().submitLogin();
+        Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
+    }
 }
