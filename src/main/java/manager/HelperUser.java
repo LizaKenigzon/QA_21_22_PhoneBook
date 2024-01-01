@@ -1,5 +1,6 @@
 package manager;
 
+import models.Contact;
 import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -43,6 +44,11 @@ public class HelperUser extends HelperBase{
                 isElementPresent(By.xpath("//button[text()='Sign Out']"));
     }
 
+    public boolean isNotLogged(){
+    return
+            isElementPresent(By.cssSelector("a[href='/login']"));
+    }
+
     public void logout() {
         click(By.xpath("//button[text()='Sign Out']"));
     }
@@ -53,5 +59,12 @@ public class HelperUser extends HelperBase{
     public boolean isNoContactsHereDisplayed() {
         WebDriverWait wait = new WebDriverWait(wd, 5);
         return wait.until(ExpectedConditions.textToBePresentInElement(wd.findElement(By.cssSelector(".contact-page_message__2qafk>h1")),"No Contacts here!"));
+    }
+
+    public void login(User user){
+        openLoginRegistrationForm();
+        fillLoginRegistrationForm(user);
+        submitLogin();
+        pause(1000);
     }
 }

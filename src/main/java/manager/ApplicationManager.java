@@ -10,6 +10,7 @@ public class ApplicationManager {
     WebDriver wd;
 
     HelperUser helperUser;
+    HelperContact helperContact;
 
     public void init(){
         wd = new ChromeDriver();
@@ -21,6 +22,11 @@ public class ApplicationManager {
 
     public HelperUser getHelperUser() {
         return helperUser;
+    }
+
+
+    public HelperContact getHelperContact() {
+        return helperContact;
     }
 
     public void stop(){
