@@ -65,6 +65,5 @@ public class HelperUser extends HelperBase{
         openLoginRegistrationForm();
         fillLoginRegistrationForm(user);
         submitLogin();
-        pause(1000);
     }
 }
