@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.nio.charset.Charset;
 import java.util.List;
 
 public class HelperBase {
@@ -55,6 +56,11 @@ public class HelperBase {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String getPhoneFromContact() {
+        return wd.findElement(By.cssSelector("div[class='contact-page_leftdiv__yhyke'] div div:last-child h3")).
+                getText();
     }
 
 }

@@ -10,7 +10,7 @@ public class HelperContact extends HelperBase{
     }
 
     public void openContactForm() {
-        pause(1000);
+        //pause(1000);
         click(By.xpath("//a[text()='ADD']"));
     }
 
@@ -25,5 +25,10 @@ public class HelperContact extends HelperBase{
 
     public void submitContact() {
         click(By.xpath("//b[text()='Save']"));
+    }
+
+    public void returnToHome() {
+        click(By.xpath("//a[text()='CONTACTS']"));
+        click(By.xpath("//a[text()='ADD']"));
     }
 }
