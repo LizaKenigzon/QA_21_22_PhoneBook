@@ -17,12 +17,15 @@ public class LoginTests extends TestBase{
 
     @Test
     public void loginSuccessWithUser(){
+        logger.info("Start test with name `loginSuccessWithUser`");
+        logger.info("Test data ---> email: 'test111@gmail.com' & password:'Aa12345$'");
         User user = new User().setEmail("test111@gmail.com").setPassword("Aa12345$");
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm(user);
         app.getHelperUser().submitLogin();
 
         Assert.assertTrue(app.getHelperUser().isLogged());
+        logger.info("Assert check is Element button 'Sign out' present");
     }
     @Test
     public void loginSuccess(){
@@ -42,14 +45,18 @@ public class LoginTests extends TestBase{
     //Assert.assertFalse();
 @Test
 public void loginSuccessModel(){
+    logger.info("Start test with name `loginSuccessModel`");
+    logger.info("Test data ---> email: 'test111@gmail.com' & password:'Aa12345$'");
     app.getHelperUser().openLoginRegistrationForm();
     app.getHelperUser().fillLoginRegistrationForm("test111@gmail.com", "Aa12345$");
     app.getHelperUser().submitLogin();
 
     Assert.assertTrue(app.getHelperUser().isLogged());
+    logger.info("Assert check is Element button 'Sign out' present");
 }
     @Test
     public void loginWrongEmail(){
+        logger.info("Start test with name `loginWrongEmail`");
         logger.info("Test data ---> email: 'test111gmail.com' & password:'Aa12345$'");
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm("test111gmail.com", "Aa12345$");
@@ -59,6 +66,7 @@ public void loginSuccessModel(){
     }
     @Test
     public void loginWrongPassword(){
+        logger.info("Start test with name `loginWrongPassword`");
         logger.info("Test data ---> email: 'test111@gmail.com' & password:'Aa123'");
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm("test111@gmail.com", "Aa123");
@@ -68,6 +76,7 @@ public void loginSuccessModel(){
     }
     @Test
     public void loginUnregisteredUser(){
+        logger.info("Start test with name `loginUnregisteredUser`");
         logger.info("Test data ---> email: 'luck111@gmail.com' & password:'Aa12345$'");
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm("luck111@gmail.com", "Aa12345$");
