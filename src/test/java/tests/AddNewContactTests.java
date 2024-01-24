@@ -1,5 +1,6 @@
 package tests;
 
+import manager.DataProviderContact;
 import models.Contact;
 import models.User;
 import org.openqa.selenium.By;
@@ -19,18 +20,18 @@ public class AddNewContactTests extends TestBase{
         }
     }
 
-    @Test
-    public void addNewContactSuccess(){
-        logger.info("Test data ---> Rita,Abu Hanna,058689+i,abuhanna+i+@mail.ru,Haifa, Oz str. 5,Kabala");
+    @Test(dataProvider = "contactSuccess", dataProviderClass = DataProviderContact.class)
+    public void addNewContactSuccess(Contact contact){
+        logger.info("Test data ---> " + contact.toString());
         int i = (int)(System.currentTimeMillis()/10000%3600);
-        Contact contact = Contact.builder()
-                .name("Rita")
-                .lastName("Abu Hanna")
-                .phone("058689"+i)
-                .email("abuhanna"+i+"@mail.ru")
-                .address("Haifa, Oz str. 5")
-                .description("Kabala")
-                .build();
+     //   Contact contact = Contact.builder()
+     //           .name("Rita")
+     //           .lastName("Abu Hanna")
+     //           .phone("058689"+i)
+     //           .email("abuhanna"+i+"@mail.ru")
+     //           .address("Haifa, Oz str. 5")
+     //           .description("Kabala")
+     //           .build();
         app.getHelperContact().openContactForm();
         app.getHelperContact().fillContactForm(contact);
         app.getHelperContact().getScreen("src/test/screenshots/screen-"+i+".png");
@@ -119,17 +120,17 @@ public class AddNewContactTests extends TestBase{
         logger.info("Assert check: add page is still displayed");
     }
 
-    @Test
-    public void addNewContactWrongPhone(){
-        logger.info("Test data ---> Anna,Anna,abuhanna+i+@mail.ru,Haifa, Oz str. 5,Kabala");
+    @Test(dataProvider = "contactWrongPhone", dataProviderClass = DataProviderContact.class)
+    public void addNewContactWrongPhone(Contact contact){
+        logger.info("Test data ---> " + contact.toString());
         int i = (int)(System.currentTimeMillis()/10000%3600);
-        Contact contact = Contact.builder()
-                .name("Anna")
-                .lastName("Anna")
-                .phone("")
-                .email("abuhanna"+i+"@mail.ru")
-                .address("Haifa, Oz str. 5")
-                .build();
+       // Contact contact = Contact.builder()
+       //         .name("Anna")
+       //         .lastName("Anna")
+       //         .phone("")
+       //         .email("abuhanna"+i+"@mail.ru")
+       //         .address("Haifa, Oz str. 5")
+       //         .build();
         app.getHelperContact().openContactForm();
         app.getHelperContact().fillContactForm(contact);
         app.getHelperContact().submitContact();
