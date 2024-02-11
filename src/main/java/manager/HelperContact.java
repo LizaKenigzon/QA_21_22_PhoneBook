@@ -38,10 +38,13 @@ public class HelperContact extends HelperBase {
         click(By.xpath("//a[text()='ADD']"));
     }
 
-    public boolean isContactAddedByName(String name) {
+    public boolean isContactAddedByName(String name)
+    {
         List<WebElement> list = wd.findElements(By.cssSelector("h2"));
-        for (WebElement el : list) {
-            if (el.getText().equals(name)) {
+        for (WebElement el:list)
+        {
+            if(el.getText().equals(name))
+            {
                 return true;
             }
         }
@@ -50,8 +53,10 @@ public class HelperContact extends HelperBase {
 
     public boolean isContactAddedByPhone(String phone) {
         List<WebElement> list = wd.findElements(By.cssSelector("h3"));
-        for (WebElement el : list) {
-            if (el.getText().equals(phone)) {
+        for (WebElement el:list)
+        {
+            if(el.getText().equals(phone))
+            {
                 return true;
             }
         }

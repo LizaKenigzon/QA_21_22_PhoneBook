@@ -12,28 +12,31 @@ import org.testng.annotations.BeforeSuite;
 import java.lang.reflect.Method;
 
 public class TestBase {
-
     Logger logger = LoggerFactory.getLogger(TestBase.class);
 
-    static ApplicationManager app = new ApplicationManager
-            (System.getProperty("browser"),BrowserType.CHROME);
+    static ApplicationManager app=new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
+
 
     @BeforeMethod(alwaysRun = true)
     public void startLogger(Method m){
-        logger.info("Name of method  " + m.getName());
+        logger.info("Name of method-->" + m.getName());
     }
-    @BeforeSuite
+
+    @BeforeSuite(alwaysRun = true)
     public void setUp(){
         app.init();
+
     }
-    @AfterSuite
+
+    @AfterSuite(alwaysRun = true)
     public void tearDown(){
-        //app.stop();
+        app.stop();
+
     }
 
     @AfterMethod
     public void end(){
-        logger.info("==========================");
+        logger.info("======================================================");
     }
 
 }

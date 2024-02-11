@@ -14,21 +14,19 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
+    Logger logger = LoggerFactory.getLogger(ApplicationManager.class);
+
     String browser;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
     }
 
-    Logger logger = LoggerFactory.getLogger(ApplicationManager.class);
-    //WebDriver wd;
+    // WebDriver wd;
     EventFiringWebDriver wd;
 
     HelperUser helperUser;
     HelperContact helperContact;
-
-    public ApplicationManager(String browser, String chrome) {
-    }
 
     public void init() {
         if(browser.equals(BrowserType.CHROME)) {
