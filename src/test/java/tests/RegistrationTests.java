@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class RegistrationTests extends TestBase {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preCondition(){
         //if Sign out present --> Log out
         if(app.getHelperUser().isLogged()){

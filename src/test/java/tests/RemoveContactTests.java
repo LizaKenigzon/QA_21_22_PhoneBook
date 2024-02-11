@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class RemoveContactTests extends TestBase{
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preConditions() {
         //if(!app.getHelperUser().isLogged()) --> ! = NOT
         if (app.getHelperUser().isNotLogged()) {

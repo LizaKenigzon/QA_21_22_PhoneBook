@@ -13,7 +13,7 @@ import java.util.List;
 //import manager.DataProviderUser;
 
 public class LoginTests extends TestBase{
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preCondition(){
         //if Sign out present --> Log out
         if(app.getHelperUser().isLogged()){
